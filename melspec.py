@@ -4,6 +4,7 @@
 import librosa
 import numpy as np
 from math import floor
+import os.path
 
 def compute_melgram(audio_path):
     ''' Compute a mel-spectrogram and returns it in a shape of (1,1,96,1366), where
@@ -16,6 +17,9 @@ def compute_melgram(audio_path):
     More info: http://librosa.github.io/librosa/generated/librosa.core.load.html#librosa.core.load
 
     '''
+
+    if  not os.path.isfile(audio_path):
+        raise RuntimeError('Invalid Path')
 
     # mel-spectrogram parameters
     SR = 12000
@@ -52,6 +56,9 @@ def compute_melgram_multiframe(audio_path, all_song=True):
     More info: http://librosa.github.io/librosa/generated/librosa.core.load.html#librosa.core.load
 
     '''
+
+    if  not os.path.isfile(audio_path):
+        raise RuntimeError('Invalid Path')
 
     # mel-spectrogram parameters
     SR = 12000
