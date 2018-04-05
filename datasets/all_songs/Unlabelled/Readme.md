@@ -1,0 +1,1 @@
+Create a parallel folder "Labelled" and add songs sorted by genres into the folder
