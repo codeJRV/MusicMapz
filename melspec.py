@@ -1,6 +1,5 @@
 # TODO Build melspecs of the songs here
 
-
 import librosa
 import numpy as np
 from math import floor
@@ -115,3 +114,23 @@ def compute_melgram_multiframe(audio_path, all_song=True):
             ret = np.concatenate((ret, retI), axis=0)
 
     return ret
+
+# Melgram computation
+def extract_melgrams( song_folder_path, MULTIFRAMES, process_all_song, num_songs_genre):
+    melgrams = np.zeros((0, 1, 96, 1366), dtype=np.float32)
+
+    num_frames_total = list()
+    for song_path in  song_folder_path:
+        print song_path
+        if MULTIFRAMES:
+            melgram = compute_melgram_multiframe(song_path, process_all_song)
+            num_frames = melgram.shape[0]
+            num_frames_total.append(num_frames)
+            print 'num frames:', num_frames
+
+        else:
+            melgram = compute_melgram(song_path)
+
+        melgrams = np.concatenate((melgrams, melgram), axis=0)
+
+    return melgrams, num_frames_total

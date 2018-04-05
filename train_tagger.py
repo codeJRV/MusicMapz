@@ -1,1 +1,1 @@
-# TODO : Training Function
+# TODO : Training Function ( use the training set and validation set, do not touch the testing set)
