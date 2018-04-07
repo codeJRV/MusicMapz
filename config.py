@@ -1,21 +1,21 @@
 
 ALL_SONG_PATH = './datasets/all_songs/Labelled'
+TRAINING_RATIO = 0.6
+TESTING_RATIO = 0.2
+VALIDATION_RATIO = 0.2
 
+MODEL_PATH  =  './saved_model/ourCRNN'
+WEIGHTS_PATH = './saved_weights/ourCRNN'
 
-SAVE_MODEL = 1
-SAVE_WEIGHTS = 1
-
-LOAD_MODEL = 0
-LOAD_WEIGHTS = 1
+LOAD_MELSPECS = 0                       # if you dont load melspecs, then by default it means save melspecs
+LOAD_MODEL    = 0                       # if you dont load model, then by default it means save model
+LOAD_WEIGHTS  = 0                       # if you dont load weights, then by default it means save weights
 
 # Dataset
 MULTIFRAMES = 0
-SAVE_DB = 0
-LOAD_DB = 1
 
 # Model parameters
-nb_classes = 10
+
 epochs = 40
 batch_size = 100
-train_test_split_ratio=0.8
 time_elapsed = 0

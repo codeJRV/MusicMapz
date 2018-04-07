@@ -44,7 +44,7 @@ def compute_melgram(audio_path):
     return ret
 
 
-def compute_melgram_multiframe(audio_path, all_song=True):
+def compute_melgram_multiframe(audio_path, trim_song=False):
     ''' Compute a mel-spectrogram in multiple frames of the song and returns it in a shape of (N,1,96,1366), where
     96 == #mel-bins, 1366 == #time frame, and N=#frames
 
@@ -65,7 +65,7 @@ def compute_melgram_multiframe(audio_path, all_song=True):
     N_MELS = 96
     HOP_LEN = 256
     DURA = 29.12  # to make it 1366 frame..
-    if all_song:
+    if trim_song:
         DURA_TRASH = 0
     else:
         DURA_TRASH = 20
@@ -118,14 +118,14 @@ def compute_melgram_multiframe(audio_path, all_song=True):
     return ret
 
 # Melgram computation
-def extract_melgrams( song_folder_path, MULTIFRAMES, process_all_song, num_songs_genre):
+def extract_melgrams( song_folder_path, MULTIFRAMES, trim_song):
     melgrams = np.zeros((0, 1, 96, 1366), dtype=np.float32)
 
     num_frames_total = list()
     for song_path in  song_folder_path:
         print song_path
         if MULTIFRAMES:
-            melgram = compute_melgram_multiframe(song_path, process_all_song)
+            melgram = compute_melgram_multiframe(song_path, trim_song)
             num_frames = melgram.shape[0]
             num_frames_total.append(num_frames)
             print 'num frames:', num_frames
