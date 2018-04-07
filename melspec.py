@@ -113,6 +113,8 @@ def compute_melgram_multiframe(audio_path, all_song=True):
 
             ret = np.concatenate((ret, retI), axis=0)
 
+            print ret.shape
+
     return ret
 
 # Melgram computation
