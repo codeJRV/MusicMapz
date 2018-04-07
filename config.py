@@ -3,7 +3,7 @@ ALL_SONG_PATH = './datasets/all_songs/Labelled'
 TRAINING_RATIO = 0.6
 TESTING_RATIO = 0.2
 VALIDATION_RATIO = 0.2
-SCALE_RATIO = 0.04
+SCALE_RATIO = 0.05
 
 MODEL_PATH  =  './saved_model/ourCRNN'
 WEIGHTS_PATH = './saved_weights/ourCRNN'
