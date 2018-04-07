@@ -15,6 +15,12 @@ import matplotlib.pyplot as plt
 
 import melspec
 import model
-
 import dataset_manager
+
+import config
+
+dataset_manager.split_and_label(config.ALL_SONG_PATH,0.6,0.2,0.2)
+
+
+
 

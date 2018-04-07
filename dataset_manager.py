@@ -7,14 +7,16 @@ from random import shuffle
 import math
 
 def split_and_label( allSongPath, train_ratio, test_ratio, validation_ratio):
-    genres = list(os.listdir(allSongPath))
+    genres = [ d for d in os.listdir(allSongPath) if os.path.isdir(os.path.join(allSongPath, d)) ]
     #print genres
-
-    weight_list = [train_ratio, test_ratio,validation_ratio]
     song_list = []
+
+    genre_names = open("lists/genre_names.txt","w")
 
     for genre in genres:
         genre_songs = []
+        
+        genre_names.write(genre+"\n")
         song_folder = allSongPath + "/" + genre
         for path, dirs, files in os.walk(song_folder):
             for file in files:
@@ -43,14 +45,14 @@ def split_and_label( allSongPath, train_ratio, test_ratio, validation_ratio):
     shuffle(testing_list)
     shuffle(validation_list)
 
-    training_path = open("training_paths.txt","w")
-    training_label = open("training_labels.txt","w")
+    training_path = open("lists/training_paths.txt","w")
+    training_label = open("lists/training_labels.txt","w")
 
-    testing_path = open("testing_paths.txt","w")
-    testing_label = open("testing_labels.txt","w")
+    testing_path = open("lists/testing_paths.txt","w")
+    testing_label = open("lists/testing_labels.txt","w")
 
-    validation_path = open("validation_paths.txt","w")
-    validation_label = open("validation_labels.txt","w")
+    validation_path = open("lists/validation_paths.txt","w")
+    validation_label = open("lists/validation_labels.txt","w")
 
     for path, label in training_list:
         training_path.write(path+ "\n" )
@@ -64,4 +66,10 @@ def split_and_label( allSongPath, train_ratio, test_ratio, validation_ratio):
         validation_path.write(path+ "\n" )
         validation_label.write(label+ "\n" )
 
-split_and_label('./datasets/all_songs/Labelled',0.6,0.2,0.2)
+    training_path.close()
+    training_label.close()
+    testing_label.close()
+    testing_path.close()
+    validation_label.close()
+    validation_path.close()
+    genre_names.close()
