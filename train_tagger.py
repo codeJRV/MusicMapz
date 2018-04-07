@@ -1,11 +1,20 @@
 # TODO : Training Function ( use the training set and validation set, do not touch the testing set)
 
-from random import shuffle
 
-song_list = [[1,2,3,4],[1,2,3,4],[1,2,3,4]]
+import os
+import time
+import h5py
+import sys
+from keras import backend as K
+from keras.optimizers import SGD
+import numpy as np
+from keras.utils import np_utils
+from math import floor
+from sklearn.metrics import confusion_matrix
+import matplotlib.pyplot as plt
 
-for genre_list in song_list:
-    print genre_list
-    genre_list = shuffle(genre_list)
-    
-print song_list[2]
+import melspec
+import model
+
+import dataset_manager
+
