@@ -6,7 +6,7 @@ import os
 from random import shuffle
 import math
 
-def split_and_label( allSongPath, train_ratio, test_ratio, validation_ratio):
+def split_and_label( allSongPath, train_ratio, test_ratio, validation_ratio,scale_ratio = 1):
     genres = [ d for d in os.listdir(allSongPath) if os.path.isdir(os.path.join(allSongPath, d)) ]
     #print genres
     song_list = []
@@ -34,12 +34,12 @@ def split_and_label( allSongPath, train_ratio, test_ratio, validation_ratio):
 
     for genre_list in song_list:
         shuffle(genre_list)
-        length = len(genre_list)
+        length = int(len(genre_list)*scale_ratio)
         idx1 = int(math.ceil(train_ratio*length))
         idx2 = int(idx1 + math.ceil(test_ratio*length))
         training_list.extend(genre_list[0:idx1])
         testing_list.extend(genre_list[idx1+1:idx2])
-        validation_list.extend(genre_list[idx2+1:]) 
+        validation_list.extend(genre_list[idx2+1:length-1]) 
 
     shuffle(training_list)
     shuffle(testing_list)

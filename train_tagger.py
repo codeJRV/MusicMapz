@@ -30,7 +30,8 @@ else:
     dataset_manager.split_and_label(config.ALL_SONG_PATH,
                                     config.TRAINING_RATIO,
                                     config.TESTING_RATIO,
-                                    config.VALIDATION_RATIO)
+                                    config.VALIDATION_RATIO,
+                                    config.SCALE_RATIO)
     
     tags               = utils.load('./lists/genre_names.txt')
     nb_classes         = len(tags)
