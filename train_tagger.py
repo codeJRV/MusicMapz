@@ -88,6 +88,7 @@ try:
     f_validate = open(config.MODEL_PATH+"_scores_validate.txt", 'w')
     f_scores = open(config.MODEL_PATH+"_scores.txt", 'w')
 
+    time_elapsed = 0
     for epoch in range(1,config.EPOCHS+1):
         t0 = time.time()
         print ("Number of epoch: " +str(epoch)+"/"+str(config.EPOCHS))
