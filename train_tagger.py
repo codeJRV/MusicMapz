@@ -13,7 +13,7 @@ from sklearn.metrics import confusion_matrix
 import matplotlib.pyplot as plt
 
 import melspec
-import model
+import model as m
 import dataset_manager
 
 import config
@@ -34,6 +34,7 @@ else:
     
     tags               = utils.load('./lists/genre_names.txt')
     nb_classes         = len(tags)
+    print nb_classes
 
     training_paths     = utils.load('./lists/training_paths.txt')
     training_labels    = utils.name2num(utils.load('./lists/training_labels.txt'),tags)
@@ -55,14 +56,15 @@ Y_train = np_utils.to_categorical(y_train, nb_classes)
 Y_validate = np_utils.to_categorical(y_validate, nb_classes)
 
 # Initialize model
-model = model.MusicTaggerCRNN(weights='msd', input_tensor=(1, 96, 1366))
-#model = MusicTaggerCNN(weights='msd', input_tensor=(1, 96, 1366))
+
+model = m.MusicTaggerCRNN(config.WEIGHTS_PATH, input_tensor=(1, 96, 1366), num_genres=nb_classes )
+
+#model = MusicTaggerCNN(weights='msd', input_tensor=(1, 96, 1366), nb)
 #sgd = SGD(lr=0.01, decay=1e-6, momentum=0.9, nesterov=True)
 
 model.compile(loss='categorical_crossentropy',
               optimizer='adam',
               metrics=['accuracy'])
-
 
 
 
