@@ -59,6 +59,7 @@ y_validate = np_utils.to_categorical(y_validate, nb_classes)
 # Initialize model
 
 if config.LOAD_WEIGHTS:
+    model_path = config.WEIGHTS_PATH + "_final_.h5"
     model = m.MusicTaggerCRNN(config.WEIGHTS_PATH, input_tensor=(1, 96, 1366), num_genres=nb_classes )
 else:
     model = m.MusicTaggerCRNN("", input_tensor=(1, 96, 1366), num_genres=nb_classes )
@@ -87,7 +88,6 @@ try:
     f_train = open(config.MODEL_PATH+"_scores_training.txt", 'w')
     f_validate = open(config.MODEL_PATH+"_scores_validate.txt", 'w')
     f_scores = open(config.MODEL_PATH+"_scores.txt", 'w')
-
     time_elapsed = 0
     for epoch in range(1,config.EPOCHS+1):
         t0 = time.time()
@@ -110,6 +110,10 @@ try:
         if config.SAVE_WEIGHTS and epoch % 5 == 0:
             model.save_weights(config.WEIGHTS_PATH + "_epoch_" + str(epoch) + ".h5")
             print("Saved model to disk in: " + config.WEIGHTS_PATH + "_epoch" + str(epoch) + ".h5")
+        if epoch ==config.EPOCHS+1
+            model.save_weights(config.WEIGHTS_PATH + "_final_" + ".h5")
+            print("Saved model to disk in: " + config.WEIGHTS_PATH + "_final_" + ".h5")
+
     f_train.close()
     f_validate.close()
     f_scores.close()

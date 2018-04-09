@@ -10,8 +10,8 @@ WEIGHTS_PATH = './saved_weights/ourCRNN'
 
 LOAD_MELSPECS = 0                       # if you dont load melspecs, then by default it means save melspecs
 LOAD_MODEL    = 0                       # if you dont load model, then by default it means save model
-LOAD_WEIGHTS  = 0
-SAVE_WEIGHTS  = 0                       
+LOAD_WEIGHTS  = 1
+SAVE_WEIGHTS  = 1                       
 
 # Dataset
 MULTIFRAMES = 0

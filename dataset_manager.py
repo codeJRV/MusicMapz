@@ -37,6 +37,7 @@ def split_and_label( allSongPath, train_ratio, test_ratio, validation_ratio,scal
         length = int(len(genre_list)*scale_ratio)
         idx1 = int(math.ceil(train_ratio*length))
         idx2 = int(idx1 + math.ceil(test_ratio*length))
+
         training_list.extend(genre_list[0:idx1])
         testing_list.extend(genre_list[idx1+1:idx2])
         validation_list.extend(genre_list[idx2+1:length-1]) 
