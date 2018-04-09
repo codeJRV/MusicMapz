@@ -41,7 +41,7 @@ else:
         model_path = config.WEIGHTS_PATH + "_final_.h5"
         model = m.MusicTaggerCRNN(config.WEIGHTS_PATH, input_tensor=(1, 96, 1366), num_genres=nb_classes )
         scores = model.evaluate(x_test, y_test, batch_size=config.BATCH_SIZE)
-        logger.info('mse=%f, mae=%f, mape=%f' % (scores[0],scores[1],scores[2]))
+        print('mse=%f, mae=%f, mape=%f' % (scores[0],scores[1],scores[2]))
 
     else:
         print 'there is no model to predict'
