@@ -110,7 +110,7 @@ try:
         if config.SAVE_WEIGHTS and epoch % 5 == 0:
             model.save_weights(config.WEIGHTS_PATH + "_epoch_" + str(epoch) + ".h5")
             print("Saved model to disk in: " + config.WEIGHTS_PATH + "_epoch" + str(epoch) + ".h5")
-        if epoch ==config.EPOCHS+1
+        if epoch == config.EPOCHS+1:
             model.save_weights(config.WEIGHTS_PATH + "_final_" + ".h5")
             print("Saved model to disk in: " + config.WEIGHTS_PATH + "_final_" + ".h5")
 
