@@ -38,9 +38,17 @@ else:
     print('X_test shape:', x_test.shape)
     print('Y_test shape:', y_test.shape)
 
+
+
     if config.LOAD_WEIGHTS:
         model_path = config.WEIGHTS_PATH + "_final_.h5"
         model = m.MusicTaggerCRNN(config.WEIGHTS_PATH, input_tensor=(1, 96, 1366), num_genres=nb_classes )
+
+        model.compile(loss='categorical_crossentropy',
+              optimizer='adam',
+              metrics=['accuracy'])
+        model.summary()
+
         scores = model.evaluate(x_test, y_test, batch_size=config.BATCH_SIZE)
         print('mse=%f, mae=%f, mape=%f' % (scores[0],scores[1],scores[2]))
 
