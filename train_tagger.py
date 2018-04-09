@@ -22,6 +22,10 @@ import utils
 
 # RUN ONCE ONLY AND REMEMEMBER TO SAVE MELSPECS
 
+tags               = utils.load('./lists/genre_names.txt')
+nb_classes         = len(tags)
+print nb_classes
+
 
 if config.LOAD_MELSPECS:
     x_train,  y_train, num_frames_train  = utils.load_h5('./datasets/saved_melspecs/training.h5')
@@ -33,9 +37,6 @@ else:
                                     config.VALIDATION_RATIO,
                                     config.SCALE_RATIO)
     
-    tags               = utils.load('./lists/genre_names.txt')
-    nb_classes         = len(tags)
-    print nb_classes
 
     training_paths     = utils.load('./lists/training_paths.txt')
     training_labels    = utils.name2num(utils.load('./lists/training_labels.txt'),tags)
@@ -107,13 +108,17 @@ try:
         print('validate Accuracy:', score_validate[1])
         f_validate.write(str(score_validate)+"\n")
         f_scores.write(str(score_train[0])+","+str(score_train[1])+","+str(score_validate[0])+","+str(score_validate[1]) + "\n")
-        if config.SAVE_WEIGHTS and epoch % 5 == 0:
-            model.save_weights(config.WEIGHTS_PATH + "_epoch_" + str(epoch) + ".h5")
-            print("Saved model to disk in: " + config.WEIGHTS_PATH + "_epoch" + str(epoch) + ".h5")
-        if epoch == config.EPOCHS+1:
-            model.save_weights(config.WEIGHTS_PATH + "_final_" + ".h5")
-            print("Saved model to disk in: " + config.WEIGHTS_PATH + "_final_" + ".h5")
-
+        # if config.SAVE_WEIGHTS and epoch % 5 == 0:
+        #     model.save_weights(config.WEIGHTS_PATH + "_epoch_" + str(epoch) + ".h5")
+        #     print("Saved model to disk in: " + config.WEIGHTS_PATH + "_epoch" + str(epoch) + ".h5")
+        # if epoch == config.EPOCHS+1:
+        #
+        # Commented out because file writes cause GPU crash after 5~10 epochs
+    
+    # Save the final model though
+    model.save_weights(config.WEIGHTS_PATH + "_final_" + ".h5")
+    print("Saved model to disk in: " + config.WEIGHTS_PATH + "_final_" + ".h5")
+    
     f_train.close()
     f_validate.close()
     f_scores.close()

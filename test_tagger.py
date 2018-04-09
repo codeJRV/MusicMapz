@@ -10,6 +10,7 @@ import numpy as np
 from keras.utils import np_utils
 from math import floor
 from sklearn.metrics import confusion_matrix
+from sklearn.manifold import TSNE 
 import matplotlib.pyplot as plt
 
 import melspec
@@ -42,6 +43,11 @@ else:
         model = m.MusicTaggerCRNN(config.WEIGHTS_PATH, input_tensor=(1, 96, 1366), num_genres=nb_classes )
         scores = model.evaluate(x_test, y_test, batch_size=config.BATCH_SIZE)
         print('mse=%f, mae=%f, mape=%f' % (scores[0],scores[1],scores[2]))
+
+        #Perfrom TSNE using scikit learn
+        weights = model.get_layer('Flatten_1').get_weights()
+        tsne = TSNE(n_components=2, random_state=random_seed, verbose=1)
+        transformed_weights = tsne.fit_transform(weights)
 
     else:
         print 'there is no model to predict'
