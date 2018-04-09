@@ -45,6 +45,7 @@ else:
         print('mse=%f, mae=%f, mape=%f' % (scores[0],scores[1],scores[2]))
 
         #Perfrom TSNE using scikit learn
+        random_seed  = 0
         weights = model.get_layer('Flatten_1').get_weights()
         tsne = TSNE(n_components=2, random_state=random_seed, verbose=1)
         transformed_weights = tsne.fit_transform(weights)
