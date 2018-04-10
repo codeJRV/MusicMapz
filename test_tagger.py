@@ -48,7 +48,8 @@ else:
               optimizer='adam',
               metrics=['accuracy'])
         model.summary()
-
+        
+        # Evaluate shape is not correct : we need to fix it from 190,1 to none, 10
         scores = model.evaluate(x_test, y_test, batch_size=config.BATCH_SIZE)
         print('mse=%f, mae=%f, mape=%f' % (scores[0],scores[1],scores[2]))
 
