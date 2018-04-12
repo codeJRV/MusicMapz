@@ -15,7 +15,7 @@ def split_and_label( allSongPath, train_ratio, test_ratio, validation_ratio,scal
 
     for genre in genres:
         genre_songs = []
-        
+
         genre_names.write(genre+"\n")
         song_folder = allSongPath + "/" + genre
         for path, dirs, files in os.walk(song_folder):
@@ -40,7 +40,7 @@ def split_and_label( allSongPath, train_ratio, test_ratio, validation_ratio,scal
 
         training_list.extend(genre_list[0:idx1])
         testing_list.extend(genre_list[idx1+1:idx2])
-        validation_list.extend(genre_list[idx2+1:length-1]) 
+        validation_list.extend(genre_list[idx2+1:length-1])
 
     shuffle(training_list)
     shuffle(testing_list)
@@ -55,18 +55,29 @@ def split_and_label( allSongPath, train_ratio, test_ratio, validation_ratio,scal
     validation_path = open("lists/validation_paths.txt","w")
     validation_label = open("lists/validation_labels.txt","w")
 
+    all_songs_path = open("lists/all_songs_paths.txt","w")
+    all_songs_label = open("lists/all_songs_labels.txt","w")
+
     for path, label in training_list:
         training_path.write(path+ "\n" )
         training_label.write(label+ "\n" )
+        all_songs_path.write(path+ "\n" )
+        all_songs_label.write(label+ "\n" )
 
     for path, label in testing_list:
         testing_path.write(path+ "\n" )
         testing_label.write(label+ "\n" )
+        all_songs_path.write(path+ "\n" )
+        all_songs_label.write(label+ "\n" )
 
     for path, label in validation_list:
         validation_path.write(path+ "\n" )
         validation_label.write(label+ "\n" )
+        all_songs_path.write(path+ "\n" )
+        all_songs_label.write(label+ "\n" )
 
+    all_songs_path.close()
+    all_songs_label.close()
     training_path.close()
     training_label.close()
     testing_label.close()

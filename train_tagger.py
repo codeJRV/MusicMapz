@@ -21,11 +21,9 @@ import config
 import utils
 
 # RUN ONCE ONLY AND REMEMEMBER TO SAVE MELSPECS
-
 tags               = utils.load('./lists/genre_names.txt')
 nb_classes         = len(tags)
-print nb_classes
-
+print (nb_classes)
 
 if config.LOAD_MELSPECS:
     x_train,  y_train, num_frames_train  = utils.load_h5('./datasets/saved_melspecs/training.h5')
@@ -37,6 +35,7 @@ else:
                                     config.VALIDATION_RATIO,
                                     config.SCALE_RATIO)
     
+
 
     training_paths     = utils.load('./lists/training_paths.txt')
     training_labels    = utils.name2num(utils.load('./lists/training_labels.txt'),tags)
@@ -106,19 +105,16 @@ try:
         score_validate = model.evaluate(x_validate, y_validate, verbose=0)
         print('validate Loss:', score_validate[0])
         print('validate Accuracy:', score_validate[1])
-        f_validate.write(str(score_validate)+"\n")
-        f_scores.write(str(score_train[0])+","+str(score_train[1])+","+str(score_validate[0])+","+str(score_validate[1]) + "\n")
-        # if config.SAVE_WEIGHTS and epoch % 5 == 0:
-        #     model.save_weights(config.WEIGHTS_PATH + "_epoch_" + str(epoch) + ".h5")
-        #     print("Saved model to disk in: " + config.WEIGHTS_PATH + "_epoch" + str(epoch) + ".h5")
-        # if epoch == config.EPOCHS+1:
-        #
-        # Commented out because file writes cause GPU crash after 5~10 epochs
-    
-    # Save the final model though
-    model.save_weights(config.WEIGHTS_PATH + "_final_" + ".h5")
-    print("Saved model to disk in: " + config.WEIGHTS_PATH + "_final_" + ".h5")
-    
+        #f_validate.write(str(score_validate)+"\n")
+        #f_scores.write(str(score_train[0])+","+str(score_train[1])+","+str(score_validate[0])+","+str(score_validate[1]) + "\n")
+        #if config.SAVE_WEIGHTS and epoch % 5 == 0:
+        #    model.save_weights(config.WEIGHTS_PATH + "_epoch_" + str(epoch) + ".h5")
+        #    print("Saved model to disk in: " + config.WEIGHTS_PATH + "_epoch" + str(epoch) + ".h5")
+    print("before saving model")
+    model.save_weights(config.WEIGHTS_PATH + "_final" + str(config.EPOCHS) + "_.h5")
+    print("after saving model")
+    print("Saved model to disk in: " + config.WEIGHTS_PATH + "_final" + str(config.EPOCHS) + "_.h5")
+
     f_train.close()
     f_validate.close()
     f_scores.close()
@@ -128,6 +124,7 @@ try:
     f.close()
 # Save files when an sudden close happens / ctrl C
 except:
+    print "exception"
     f_train.close()
     f_validate.close()
     f_scores.close()
@@ -135,8 +132,9 @@ except:
     f = open(config.MODEL_PATH + "_time_elapsed.txt", 'w')
     f.write(str(time_elapsed))
     f.close()
-finally:
     f_train.close()
+finally:
+    print "finally"
     f_validate.close()
     f_scores.close()
     # Save time elapsed
