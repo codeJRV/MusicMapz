@@ -1,10 +1,10 @@
-hiphop
-jazz
-blues
-pop
 country
-classical
-rock
+jazz
 disco
+pop
+blues
 reggae
 metal
+rock
+hiphop
+classical

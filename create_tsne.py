@@ -26,6 +26,7 @@ import dataset_manager
 import config
 
 import utils
+from create_tsne_embeddings import create_embeddings
 
 tags= utils.load('./lists/genre_names.txt')
 nb_classes= len(tags)
@@ -52,6 +53,10 @@ def plot_tsne(x_data,y_data,input_type):
     plt.clim(-0.5, 9.5)
     plt.title(plot_title)
     plt.savefig(config.PLOT_PATH + "t_sne_" + input_type + '.png')
+
+## Code starts here
+
+
 
 if config.LOAD_MELSPECS:
     x_data,  y_data, num_frames_test  = utils.load_h5('./datasets/saved_melspecs/all_songs.h5')
@@ -99,6 +104,7 @@ if config.LOAD_WEIGHTS:
     utils.save_h5(config.PLOT_PATH + "softmax_output.h5" ,predicted_prob,y_data,num_frames_test)
     plot_tsne(x_data,y_data,"melspectrogram")
     plot_tsne(predicted_prob,y_data,"CRNN_features")
+
     #print('mse=%f, mae=%f, mape=%f' % (scores[0],scores[1],scores[2]))
     #Perfrom TSNE using scikit learn
     '''random_seed  = 0

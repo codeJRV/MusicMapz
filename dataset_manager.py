@@ -5,6 +5,7 @@
 import os
 from random import shuffle
 import math
+import json
 
 def split_and_label( allSongPath, train_ratio, test_ratio, validation_ratio,scale_ratio = 1):
     genres = [ d for d in os.listdir(allSongPath) if os.path.isdir(os.path.join(allSongPath, d)) ]
