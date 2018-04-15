@@ -6,8 +6,8 @@
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<style>
 			body {
-				color: #070000;
-				background-color: #080000;
+				color: #0e0e0e;
+				background-color: #0e0e0e;
 				margin: 0px;
 				overflow: hidden;
 			}
@@ -22,7 +22,7 @@
 				font-weight: bold;
 			}
 			a {
-				color: #080000;
+				color: #0e0e0e;
 			}
 		</style>
 
@@ -72,7 +72,12 @@
                 </div>
 			</header>
 		        <div class="mdl-layout__drawer" id='drawer'>
-		            <span class="mdl-layout-title">Music Explorer</span>
+
+
+
+		            <span class="mdl-layout-title"><p><h5>Music <img src="YOmusic.png" alt="Mountain View" style="width:50px;height:50px;" onclick="updateGraph();yo_Clicked = true;" > Mappr</h5></p>
+
+					</span>
 	            	<nav class="mdl-navigation">
 
 						<ul class="demo-list-control mdl-list">
@@ -209,8 +214,9 @@
 			var previousSampleIndex = -1;
 			var threshold = 0.1;
 			var pointSize = 3;
-			var width = 200;
-			var length = 200;
+			var width = 150;
+			var length = 150;
+			var yo_Clicked = false;
 
 			var drawerWidth = document.getElementById("drawer").clientWidth;
 			var titleHeight = document.getElementById("header").clientHeight;
@@ -252,8 +258,10 @@
 					document.getElementById("sliders").style.visibility = "visible";
 					document.getElementById("slider-text-1").innerHTML = "Perplexity";
 					document.getElementById("slider-text-2").innerHTML = "Iterations";
-				} else if (method == "pca") {
+				} else if (method == "pca" || yo_Clicked == true) {
 					document.getElementById("sliders").style.visibility = "hidden";
+					method="pca";
+					yo_Clicked=false;
 				}
 
 				let targetData = getData(method, feature, slider1, slider2);
