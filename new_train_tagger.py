@@ -16,7 +16,7 @@ import melspec
 import model as m
 import dataset_manager
 
-import config
+import config2
 
 import utils
 
@@ -57,7 +57,7 @@ y_train = np_utils.to_categorical(y_train, nb_classes)
 y_validate = np_utils.to_categorical(y_validate, nb_classes)
 
 # Initialize model
-
+'''
 if config.LOAD_WEIGHTS:
     model_path = config.WEIGHTS_PATH + "_final40_.h5"
     model = m.MusicTaggerCRNN(config.WEIGHTS_PATH, input_tensor=(1, 96, 1366), num_genres=nb_classes )
@@ -140,4 +140,4 @@ finally:
     # Save time elapsed
     f = open(config.MODEL_PATH + "_time_elapsed.txt", 'w')
     f.write(str(time_elapsed))
-    f.close()
+    f.close()'''

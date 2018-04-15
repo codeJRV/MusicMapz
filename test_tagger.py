@@ -44,7 +44,7 @@ else:
 if config.LOAD_WEIGHTS:
     y_test_categories = np_utils.to_categorical(y_test, nb_classes)
     model_path = config.WEIGHTS_PATH + "_final" + str(config.EPOCHS) + "_.h5"
-    model = m.MusicTaggerCRNN(model_path, input_tensor=(1, 96, 1366), num_genres=nb_classes )
+    model = m.MusicTaggerCNN(model_path, input_tensor=(1, 96, 1366), num_genres=nb_classes )
     model.compile(loss='categorical_crossentropy',
           optimizer='adam',
           metrics=['accuracy'])

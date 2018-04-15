@@ -18,5 +18,5 @@ MULTIFRAMES = 0
 
 # Model parameters
 
-EPOCHS = 100
+EPOCHS = 120
 BATCH_SIZE = 16
