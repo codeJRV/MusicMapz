@@ -38,8 +38,7 @@ def transform_numpy_to_json(array, labels):
     data = []
     for index, position in enumerate(array):
         position_list = position.tolist()
-        position_list.append(labels[index])
-
+        position_list.append(float(labels[index])/float(max(labels)+1))
         data.append({
             'coordinates': position_list
         })
