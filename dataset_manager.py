@@ -72,7 +72,7 @@ def split_and_label( allSongPath, train_ratio, test_ratio, validation_ratio,scal
         all_songs_label.write(label+ "\n" )
 
     for path, label in validation_list:
-        validation_path.write(path+ "\n" )
+        validation_path.write(path+ "\n" ) #genre_names = open("lists/genre_names.txt","w")
         validation_label.write(label+ "\n" )
         all_songs_path.write(path+ "\n" )
         all_songs_label.write(label+ "\n" )
@@ -86,3 +86,18 @@ def split_and_label( allSongPath, train_ratio, test_ratio, validation_ratio,scal
     validation_label.close()
     validation_path.close()
     genre_names.close()
+
+def split_and_label2( allSongPath, train_ratio, test_ratio, validation_ratio,scale_ratio = 1,all_song_path_file, all_song_label_file):
+
+    genres = open(all_song_label_file,"r")
+    songs  = open(all_song_path_file,"r")
+
+    allsongdict = {}
+
+    for i in range(len(genres))
+        allsongdict[genres[i]].append(songs[i])
+    
+    print(allsongdict)
+
+split_and_label2('',0,0,0,'/home/jrv/Desktop/jrv1/MusicMapz-old/lists/all_songs_paths2.txt','/home/jrv/Desktop/jrv1/MusicMapz-old/lists/all_songs_labels2.txt') 
+     

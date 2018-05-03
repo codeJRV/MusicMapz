@@ -14,7 +14,7 @@ import matplotlib.pyplot as plt
 
 import melspec
 import model as m
-import dataset_manager
+# import dataset_manager
 
 import config
 
@@ -29,19 +29,19 @@ if config.LOAD_MELSPECS:
     x_train,  y_train, num_frames_train  = utils.load_h5('./datasets/saved_melspecs/training.h5')
     x_validate,  y_validate, num_frames_validate  = utils.load_h5('./datasets/saved_melspecs/validation.h5')
 else:
-    dataset_manager.split_and_label(config.ALL_SONG_PATH,
-                                    config.TRAINING_RATIO,
-                                    config.TESTING_RATIO,
-                                    config.VALIDATION_RATIO,
-                                    config.SCALE_RATIO)
+    # dataset_manager.split_and_label(config.ALL_SONG_PATH,
+    #                                 config.TRAINING_RATIO,
+    #                                 config.TESTING_RATIO,
+    #                                 config.VALIDATION_RATIO,
+    #                                 config.SCALE_RATIO)
 
 
 
-    training_paths     = utils.load('./lists/training_paths.txt')
-    training_labels    = utils.name2num(utils.load('./lists/training_labels.txt'),tags)
+    training_paths     = utils.load('./lists/training_paths2.txt')
+    training_labels    = utils.name2num(utils.load('./lists/training_labels2.txt'),tags)
 
-    validation_paths   = utils.load('./lists/validation_paths.txt')
-    validation_labels  = utils.name2num(utils.load('./lists/validation_labels.txt'),tags)
+    validation_paths   = utils.load('./lists/validation_paths2.txt')
+    validation_labels  = utils.name2num(utils.load('./lists/validation_labels2.txt'),tags)
 
     x_train, num_frames_train = melspec.extract_melgrams(training_paths, config.MULTIFRAMES, trim_song=True)
     print('X_train shape:', x_train.shape)
@@ -50,8 +50,8 @@ else:
     y_train    = np.array(training_labels)
     y_validate = np.array(validation_labels)
 
-    utils.save_h5('./datasets/saved_melspecs/training.h5',x_train,y_train,num_frames_train)
-    utils.save_h5('./datasets/saved_melspecs/validation.h5',x_validate,y_validate,num_frames_validate)
+    utils.save_h5('./datasets/saved_melspecs/training2.h5',x_train,y_train,num_frames_train)
+    utils.save_h5('./datasets/saved_melspecs/validation2.h5',x_validate,y_validate,num_frames_validate)
 
 y_train = np_utils.to_categorical(y_train, nb_classes)
 y_validate = np_utils.to_categorical(y_validate, nb_classes)

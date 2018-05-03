@@ -8,8 +8,8 @@ SCALE_RATIO = 1
 MODEL_PATH  =  './saved_model/ourCRNN'
 WEIGHTS_PATH = './weights/ourCRNN'
 
-LOAD_MELSPECS = 0                       # if you dont load melspecs, then by default it means save melspecs
-LOAD_MODEL    = 0                       # if you dont load model, then by default it means save model
+LOAD_MELSPECS = 1                       # if you dont load melspecs, then by default it means save melspecs
+LOAD_MODEL    = 1                       # if you dont load model, then by default it means save model
 LOAD_WEIGHTS  = 1
 SAVE_WEIGHTS  = 1
 PLOT_PATH = './Plots/'

@@ -22,7 +22,7 @@ from tsne import bh_sne
 from numpy import array
 import melspec
 import model as m
-import dataset_manager
+#import dataset_manager
 import config
 
 import utils
@@ -67,8 +67,8 @@ else:
                                     config.TESTING_RATIO,
                                     config.VALIDATION_RATIO,
                                     config.SCALE_RATIO)
-    song_paths     = utils.load('./lists/all_songs_paths.txt')
-    song_labels    = utils.name2num(utils.load('./lists/all_songs_labels.txt'),tags)
+    song_paths     = utils.load('./lists/all_songs_paths2.txt')
+    song_labels    = utils.name2num(utils.load('./lists/all_songs_labels2.txt'),tags)
 
     x_data, num_frames_test = melspec.extract_melgrams(song_paths, config.MULTIFRAMES, trim_song=True)
     y_data = np.array(song_labels)
@@ -88,11 +88,11 @@ if config.LOAD_WEIGHTS:
 
     # Evaluate shape is not correct : we need to fix it from 190,1 to none, 10  --- fromh here 1) 2) incremental tsne.
     scores = model.evaluate(x_data, y_data_categories, batch_size=config.BATCH_SIZE)
-    print scores
+    #print scores
 
     predicted_prob = model.predict(x_data)
-    print predicted_prob.shape
-    print predicted_prob[0]
+    #print predicted_prob.shape
+    #print predicted_prob[0]
     predicted_classes = np.argmax(predicted_prob, axis=1)
     print predicted_classes
     print y_data
@@ -101,7 +101,7 @@ if config.LOAD_WEIGHTS:
         if predicted_classes[i]==y_data[i]:
             matches=matches+1
     print "Accuracy %:", 100*matches/len(y_data)
-    utils.save_h5(config.PLOT_PATH + "softmax_output.h5" ,predicted_prob,y_data,num_frames_test)
+    utils.save_h5(config.PLOT_PATH + "softmax_output2.h5" ,predicted_prob,y_data,num_frames_test)
     plot_tsne(x_data,y_data,"melspectrogram")
     plot_tsne(predicted_prob,y_data,"CRNN_features")
 
