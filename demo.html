@@ -297,7 +297,7 @@
 				for (var i = 0; i < data.length; ++i) {
 					
 					//Integrate class labelling here somehow
-					var hue = data[i]['coordinates'][2]/10;
+					var hue = data[i]['coordinates'][2]/10;  
 					console.log(hue)
 					color.setHSL(hue, .8, .5);
 
@@ -499,10 +499,18 @@
 
 						// load a sound and play it immediatly
 						let file = filepath;
+						
+						context.close();
+						delete context;
+						context = new AudioContext();
+						delete lineOut;
+						lineOut = new WebAudiox.LineOut(context);
+						lineOut.volume = 0.4;
+
+
 					    WebAudiox.loadBuffer(context, file, function(buffer){
 							// init AudioBufferSourceNode
-
-
+							
 							var WebAudiox	= WebAudiox	|| {}
 
 					        var source  = context.createBufferSource();
@@ -513,7 +521,7 @@
 							// start the sound now
 
 							source.start(0);
-							source.stop(context.currentTime + 5)
+						
 					    });
 
 						document.getElementById("filename").innerHTML = filepath;
