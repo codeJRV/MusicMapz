@@ -26,16 +26,14 @@ nb_classes         = len(tags)
 print (nb_classes)
 
 if config.LOAD_MELSPECS:
-    x_train,  y_train, num_frames_train  = utils.load_h5('./datasets/saved_melspecs/training.h5')
-    x_validate,  y_validate, num_frames_validate  = utils.load_h5('./datasets/saved_melspecs/validation.h5')
+    x_train,  y_train, num_frames_train  = utils.load_h5('./datasets/saved_melspecs/training2.h5')
+    x_validate,  y_validate, num_frames_validate  = utils.load_h5('./datasets/saved_melspecs/validation2.h5')
 else:
     # dataset_manager.split_and_label(config.ALL_SONG_PATH,
     #                                 config.TRAINING_RATIO,
     #                                 config.TESTING_RATIO,
     #                                 config.VALIDATION_RATIO,
     #                                 config.SCALE_RATIO)
-
-
 
     training_paths     = utils.load('./lists/training_paths2.txt')
     training_labels    = utils.name2num(utils.load('./lists/training_labels2.txt'),tags)
