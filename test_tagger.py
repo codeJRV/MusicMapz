@@ -28,9 +28,7 @@ nb_classes= len(tags)
 
 if config.LOAD_MELSPECS:
     x_test,  y_test, num_frames_test  = utils.load_h5('./datasets/saved_melspecs/testing.h5')
-else:
-
-    #print nb_classes
+else:'''
     testing_paths     = utils.load('./lists/testing_paths2.txt')
     testing_labels    = utils.name2num(utils.load('./lists/testing_labels2.txt'),tags)
 
@@ -38,8 +36,9 @@ else:
     y_test = np.array(testing_labels)
     utils.save_h5('./datasets/saved_melspecs/testing2.h5',x_test,y_test,num_frames_test)
     print('X_test shape:', x_test.shape)
-    print('Y_test shape:', y_test.shape)
+    print('Y_test shape:', y_test.shape)'''
 
+    print "Error : No testing data to load"
 
 if config.LOAD_WEIGHTS:
     y_test_categories = np_utils.to_categorical(y_test, nb_classes)
@@ -62,12 +61,5 @@ if config.LOAD_WEIGHTS:
         if predicted_classes[i]==y_test[i]:
             matches=matches+1
     print matches/len(y_test)
-
-    #print('mse=%f, mae=%f, mape=%f' % (scores[0],scores[1],scores[2]))
-    #Perfrom TSNE using scikit learn
-    '''random_seed  = 0
-    weights = model.get_layer('Flatten_1').get_weights()
-    tsne = TSNE(n_components=2, random_state=random_seed, verbose=1)
-    transformed_weights = tsne.fit_transform(weights)'''
 else:
-    print 'there is no model to predict'
+    print 'Error: there is no model to predict'
