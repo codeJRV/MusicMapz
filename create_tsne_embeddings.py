@@ -47,7 +47,7 @@ def transform_numpy_to_json(array, labels):
 
 
 def get_scaled_umap_embeddings(features,labels, neighbour, distance):
-    
+
     embedding = umap.UMAP(n_neighbors=neighbour,
                           min_dist=distance,
                           metric='correlation').fit_transform(features)
@@ -67,7 +67,7 @@ def get_pca(features, labels):
 
 #####
 
-def create_embeddings(listPath, modelA_features,modelA_labels, modelB_features, modelB_labels):    
+def create_embeddings(listPath, modelA_features,modelA_labels, modelB_features, modelB_labels):
 
     modelA_features = np.nan_to_num(np.array(modelA_features))
     modelB_features = np.array(modelB_features)
@@ -85,8 +85,8 @@ def create_embeddings(listPath, modelA_features,modelA_labels, modelB_features, 
     all_json = dict()
     all_json["filenames"] = all_file_paths
 
-    print(len(all_file_paths), 
-          modelA_features.shape, 
+    print(len(all_file_paths),
+          modelA_features.shape,
           modelB_features.shape)
 
 
@@ -110,21 +110,21 @@ def create_embeddings(listPath, modelA_features,modelA_labels, modelB_features, 
             tnse_embeddings_modelB.append(tsne_modelB)
             tnse_embeddings_modelA.append(tnse_modelA)
 
-            modelB_key = 'tsnemodelB{}{}'.format(i, j) 
-            modelA_key = 'tsnemodelA{}{}'.format(i, j) 
+            modelB_key = 'tsnemodelB{}{}'.format(i, j)
+            modelA_key = 'tsnemodelA{}{}'.format(i, j)
 
             all_json[modelB_key] = transform_numpy_to_json(tsne_modelB,modelB_labels)
             all_json[modelA_key] = transform_numpy_to_json(tnse_modelA,modelA_labels)
 
-    # fig, ax = plt.subplots(nrows=len(perplexities), 
+    # fig, ax = plt.subplots(nrows=len(perplexities),
     #                        ncols=len(iterations),
     #                        figsize=(30, 30))
 
     # for i, row in enumerate(ax):
     #     for j, col in enumerate(row):
     #         current_plot = i * len(iterations) + j
-    #         col.scatter(tnse_embeddings_modelB[current_plot].T[0], 
-    #                     tnse_embeddings_modelB[current_plot].T[1], 
+    #         col.scatter(tnse_embeddings_modelB[current_plot].T[0],
+    #                     tnse_embeddings_modelB[current_plot].T[1],
     #                     s=1)
     # plt.show()
 
@@ -149,8 +149,8 @@ def create_embeddings(listPath, modelA_features,modelA_labels, modelB_features, 
             umap_embeddings_modelB.append(umap_modelB)
             umap_embeddings_modelA.append(umap_modelA)
 
-            modelB_key = 'umapmodelB{}{}'.format(i, j) 
-            modelA_key = 'umapmodelA{}{}'.format(i, j) 
+            modelB_key = 'umapmodelB{}{}'.format(i, j)
+            modelA_key = 'umapmodelA{}{}'.format(i, j)
 
             all_json[modelB_key] = transform_numpy_to_json(umap_modelB,modelB_labels)
             all_json[modelA_key] = transform_numpy_to_json(umap_modelA,modelA_labels)
@@ -161,7 +161,7 @@ def create_embeddings(listPath, modelA_features,modelA_labels, modelB_features, 
     pca_modelA = get_pca(modelA_features,modelA_labels)
 
     modelB_key = 'pcamodelB'
-    modelA_key = 'pcamodelA' 
+    modelA_key = 'pcamodelA'
 
     all_json[modelB_key] = transform_numpy_to_json(pca_modelB,modelB_labels)
     all_json[modelA_key] = transform_numpy_to_json(pca_modelA,modelA_labels)
@@ -175,6 +175,6 @@ def create_embeddings(listPath, modelA_features,modelA_labels, modelB_features, 
 
 
 
-predicted_prob,y_data,num_frames_test = utils.load_h5(config.PLOT_PATH + "softmax_output.h5" )
+predicted_prob,y_data,num_frames_test = utils.load_h5(config.SOFTMAX_RESULT_FILE)
 
-create_embeddings('./lists/all_songs_paths.txt',predicted_prob,y_data,predicted_prob,y_data)
+create_embeddings(config.ALL_SONGS_PATHS,predicted_prob,y_data,predicted_prob,y_data)

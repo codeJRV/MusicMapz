@@ -6,8 +6,17 @@ import os
 from random import shuffle
 import math
 import json
+from random import shuffle
+import math
+from sklearn.model_selection import train_test_split
+import json
+import config
+import numpy as np
+import pandas as pd
+import os
+import ast
 
-def split_and_label( allSongPath, train_ratio, test_ratio, validation_ratio,scale_ratio = 1):
+def get_all_song_paths_and_labels(allSongPath):
     genres = [ d for d in os.listdir(allSongPath) if os.path.isdir(os.path.join(allSongPath, d)) ]
     #print genres
     song_list = []
@@ -29,60 +38,62 @@ def split_and_label( allSongPath, train_ratio, test_ratio, validation_ratio,scal
 
         song_list.append(genre_songs)
 
-    training_list = []
-    testing_list = []
-    validation_list = []
+    all_songs_path = open(config.ALL_SONGS_PATHS,"w")
+    all_songs_label = open(config.ALL_SONGS_LABELS,"w")
 
-    for genre_list in song_list:
-        shuffle(genre_list)
-        length = int(len(genre_list)*scale_ratio)
-        idx1 = int(math.ceil(train_ratio*length))
-        idx2 = int(idx1 + math.ceil(test_ratio*length))
-
-        training_list.extend(genre_list[0:idx1])
-        testing_list.extend(genre_list[idx1+1:idx2])
-        validation_list.extend(genre_list[idx2+1:length-1])
-
-    shuffle(training_list)
-    shuffle(testing_list)
-    shuffle(validation_list)
-
-    training_path = open("lists/training_paths.txt","w")
-    training_label = open("lists/training_labels.txt","w")
-
-    testing_path = open("lists/testing_paths.txt","w")
-    testing_label = open("lists/testing_labels.txt","w")
-
-    validation_path = open("lists/validation_paths.txt","w")
-    validation_label = open("lists/validation_labels.txt","w")
-
-    all_songs_path = open("lists/all_songs_paths.txt","w")
-    all_songs_label = open("lists/all_songs_labels.txt","w")
-
-    for path, label in training_list:
-        training_path.write(path+ "\n" )
-        training_label.write(label+ "\n" )
-        all_songs_path.write(path+ "\n" )
-        all_songs_label.write(label+ "\n" )
-
-    for path, label in testing_list:
-        testing_path.write(path+ "\n" )
-        testing_label.write(label+ "\n" )
-        all_songs_path.write(path+ "\n" )
-        all_songs_label.write(label+ "\n" )
-
-    for path, label in validation_list:
-        validation_path.write(path+ "\n" ) #genre_names = open("lists/genre_names.txt","w")
-        validation_label.write(label+ "\n" )
+    for path, label in song_list:
         all_songs_path.write(path+ "\n" )
         all_songs_label.write(label+ "\n" )
 
     all_songs_path.close()
     all_songs_label.close()
-    training_path.close()
-    training_label.close()
-    testing_label.close()
-    testing_path.close()
-    validation_label.close()
-    validation_path.close()
     genre_names.close()
+
+def get_all_song_paths_and_labels_FMA():
+    load = lambda file_path: [line.rstrip('\n') for line in open(file_path)]
+    name2num = lambda namelist,numlist : [numlist.index(name) for name in namelist]
+
+    genre_map={'Classical': 'classical',
+    'Hip-Hop' : 'hiphop',
+    'Country' : 'country',
+    'Jazz' : 'jazz',
+    'Pop': 'pop',
+    'Rock' : 'rock',
+    'Blues' : 'blues'}
+
+    tags=load(config.GENRES_FILE)
+
+    genre_songs=[]
+    csv_filepath=config.FMA_DATASET_CSV
+    tracks = pd.read_csv(csv_filepath, index_col=0, header=[0, 1])
+    print (tracks.describe())
+    small = tracks['set', 'subset'] <= 'small'
+    tracks_dict = tracks.loc[small, ('track', 'genre_top')]
+    print (tracks_dict)
+
+    #print (tracks_dict.get_value(2))
+    #print (tracks.describe())
+    #print (tracks.columns)
+    #print tracks[2]['track']['track_id']
+    #print set(tracks['track']['genre_top'])
+
+    all_songs_path = open(config.ALL_SONGS_PATHS,"w")
+    all_songs_label = open(config.ALL_SONGS_LABELS,"w")
+
+    song_folder = config.SONG_FLODER_FMA # EDIT
+
+    for path, dirs, files in os.walk(song_folder):
+        for file in files:
+            if file.endswith(".mp3"):
+                song_path = path + "/" + file
+                #print song_path
+                song_id=int(song_path[-10:-4])
+                print (song_id)
+                genre= tracks_dict.get_value(song_id)
+                if genre in genre_map:
+                    song = [song_path,genre_map[genre]]
+                    genre_songs.append(song)
+
+    for path, label in genre_songs:
+        all_songs_path.write(path+ "\n")
+        all_songs_label.write(label+ "\n")
