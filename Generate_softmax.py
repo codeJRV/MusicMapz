@@ -2,31 +2,28 @@
 
 ## Dummy code to create features.txt
 
-import pickle
-import tensorflow as tf
-from tensorboard.plugins import projector
 import os
 import time
 import h5py
 import sys
 from keras import backend as K
-from keras.optimizers import SGD
 import numpy as np
 from keras.utils import np_utils
 from math import floor
-from sklearn.metrics import confusion_matrix
 from sklearn.manifold import TSNE
 import matplotlib.pyplot as plt
 from matplotlib import pyplot as plt
 from tsne import bh_sne
 from numpy import array
-import Generate_melspec
-import model as m
+import config
+if config.SELECT_DEEP_MODELS:
+    import model_deep as m
+else:
+    import model as m
 #import dataset_manager
 import config
-
+from preprocess_songs import merge_all_h5s
 import utils
-from create_tsne_embeddings import create_embeddings
 
 tags= utils.load(config.GENRES_FILE)
 nb_classes= len(tags)
@@ -59,10 +56,16 @@ def plot_tsne(x_data,y_data,input_type):
 
 
 if config.LOAD_MELSPECS:
-    x_data,  y_data, num_frames_test  = utils.load_h5('./datasets/saved_melspecs/all_songs.h5')
+    x_data,  y_data, num_frames_test  = utils.load_h5(config.ALL_SONGS_MELSPEC_FILE)
+    print x_data.shape
+    print y_data.shape
 else:
-    print "Error: No input to load"
-    sys.exit()
+    #print "Error: No input to load"
+    #sys.exit()
+    merge_all_h5s()
+    x_data,  y_data, num_frames_test  = utils.load_h5(config.ALL_SONGS_MELSPEC_FILE)
+    print x_data.shape
+    print y_data.shape
 
 if config.LOAD_WEIGHTS:
     y_data_categories = np_utils.to_categorical(y_data, nb_classes)

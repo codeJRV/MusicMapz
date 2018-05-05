@@ -12,17 +12,18 @@ FMA_DATASET_CSV='/home/jrv/Desktop/jrv1/fma/tracks.csv'
 ALL_SONGS_PATHS='./lists/all_songs_paths_fma.txt'
 ALL_SONGS_LABELS='/lists/all_songs_labels_fma.txt'
 
-TRAINING_SONGS_PATHS = "lists/training_paths_fma.txt"
-TRAINING_SONGS_LABELS = "lists/training_labels_fma.txt"
+TRAINING_SONGS_PATHS = "./lists/training_paths_fma.txt"
+TRAINING_SONGS_LABELS = "./lists/training_labels_fma.txt"
 
-TESTING_SONGS_PATHS = "lists/testing_paths_fma.txt"
-TESTING_SONGS_LABELS = "lists/testing_labels_fma.txt"
+TESTING_SONGS_PATHS = "./lists/testing_paths_fma.txt"
+TESTING_SONGS_LABELS = "./lists/testing_labels_fma.txt"
 
-VALIDATION_SONGS_PATHS = "lists/validation_paths_fma.txt"
-VALIDATION_SONGS_LABELS = "lists/validation_labels_fma.txt"
+VALIDATION_SONGS_PATHS = "./lists/validation_paths_fma.txt"
+VALIDATION_SONGS_LABELS = "./lists/validation_labels_fma.txt"
 
 ## melspec files Configuration
 GENRES_FILE='./lists/genre_names.txt'
+ALL_SONGS_MELSPEC_FILE='./datasets/saved_melspecs/all_songs_fma.h5'
 TRAINING_MELSPEC_FILE='./datasets/saved_melspecs/training_fma.h5'
 VALIDATION_MELSPEC_FILE='./datasets/saved_melspecs/validation_fma.h5'
 TESTING_MELSPEC_FILE='./datasets/saved_melspecs/testing_fma.h5'

@@ -15,7 +15,6 @@ import matplotlib.pyplot as plt
 from matplotlib import pyplot as plt
 from tsne import bh_sne
 from numpy import array
-import Generate_melspec
 
 import dataset_manager
 import config
@@ -46,15 +45,7 @@ if config.LOAD_WEIGHTS:
 
     # Evaluate shape is not correct : we need to fix it from 190,1 to none, 10  --- fromh here 1) 2) incremental tsne.
     scores = model.evaluate(x_test, y_test_categories, batch_size=config.BATCH_SIZE)
-    print scores
-    predicted_prob = model.predict(x_test)
-    print "The test Accuracy: "
-    print predicted_prob[0]
-    predicted_classes = np.argmax(predicted_prob, axis=1)
-    matches=0
-    for i in range(0,len(y_test)):
-        if predicted_classes[i]==y_test[i]:
-            matches=matches+1
-    print 100*matches/len(y_test)
+    print('Test Loss:', scores[0])
+    print('Test Accuracy:', 100*scores[1])
 else:
     print 'Error: there is no model to predict'
