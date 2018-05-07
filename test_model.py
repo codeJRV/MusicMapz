@@ -15,7 +15,7 @@ import matplotlib.pyplot as plt
 from matplotlib import pyplot as plt
 from tsne import bh_sne
 from numpy import array
-
+from keras.utils import plot_model
 import dataset_manager
 import config
 import utils
@@ -25,7 +25,7 @@ if config.SELECT_DEEP_MODELS:
 else:
     import model as m
 
-tags= utils.load(config.GENRES_FILE_PATH)
+tags= utils.load(config.GENRES_FILE)
 nb_classes= len(tags)
 
 if config.LOAD_MELSPECS:
@@ -36,12 +36,12 @@ else:
 
 if config.LOAD_WEIGHTS:
     y_test_categories = np_utils.to_categorical(y_test, nb_classes)
-    model_path =
-    model = m.MusicTaggerCRNN(model_path, input_tensor=(1, 96, 1366), num_genres=nb_classes )
+    model = m.MusicTaggerCRNN(config.MODEL_WEIGHTS_FILE, input_tensor=(1, 96, 1366), num_genres=nb_classes )
     model.compile(loss='categorical_crossentropy',
           optimizer='adam',
           metrics=['accuracy'])
     model.summary()
+    plot_model(model,to_file='model.png', show_shapes=True, show_layer_names=True)
 
     # Evaluate shape is not correct : we need to fix it from 190,1 to none, 10  --- fromh here 1) 2) incremental tsne.
     scores = model.evaluate(x_test, y_test_categories, batch_size=config.BATCH_SIZE)

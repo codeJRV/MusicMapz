@@ -35,7 +35,7 @@ BATCH_SIZE = 16
 MODEL_PATH  =  './saved_model/ourCRNN'
 MODEL_WEIGHTS_FILE = "./weights/ourCRNN_final" + str(EPOCHS) + "_.h5"
 
-LOAD_MELSPECS = 0                       # if you dont load melspecs, then by default it means save melspecs
+LOAD_MELSPECS = 1                       # if you dont load melspecs, then by default it means save melspecs
 LOAD_MODEL    = 1                       # if you dont load model, then by default it means save model
 LOAD_WEIGHTS  = 1
 SAVE_WEIGHTS  = 1
