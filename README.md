@@ -14,7 +14,7 @@ We then perform dimensionality reduction techniques on the reduced feature vecto
 
 ## 2. Literature Review
 
-``````
+
 ![Alt text](https://github.com/codeJRV/MusicMapz/blob/master/README-FILES/UMap.png?raw=true "Figure 1: Performance comparison of UMAP vs t-SNE [26]")
 
 
