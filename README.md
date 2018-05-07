@@ -121,12 +121,12 @@ However, PCA as shown in Fig 6.b also indicates that the map becomes less intuit
 
  1. GTZAN Dataset : This dataset is the most-used public dataset for evaluation in machine listening research for music    genre recognition (MGR). It was first used for the well known paper in genre classification [33]. The dataset consists    of 1000 audio tracks each 30 seconds long distributed among 10 genres, each represented by 100 tracks. The tracks    are all 22050Hz Mono 16-bit audio files in .wav format.
 
- ```dataset clips   genres length[s] size[GiB]
-     .
-     small  8,000   8          30       7.6
-     medium 25,000  16         30       23
-     large  106,574 161        30       98
-     full   106,574 161        278      917```
+ ```dataset clips   genres length[s] size[GiB]```
+  
+ ```small  8,000   8          30       7.6```
+ ```medium 25,000  16         30       23 ```
+ ```large  106,574 161        30       98 ```
+ ```full   106,574 161        278      917```
 
 
  Table 2: FMA data subsets
