@@ -154,17 +154,7 @@ However, PCA as shown in Fig 6.b also indicates that the map becomes less intuit
 
 ![Alt text](https://github.com/codeJRV/MusicMapz/blob/master/README-FILES/Results.png?raw=true )
 
-
- (a) t-SNE perplexity=5, Iterations
- (b) t-SNE perplexity=30, Iterations
- (c) t-SNE perplexity=50, Iterations
- (d) t-SNE perplexity=100, Iterations
- (e) UMAP neighbor=5, min-dist=0.
- (f) UMAP neighbor=30, min-dist=0.
- (g) UMAP neighbor=50, min-dist=0.
- (h) UMAP neighbor=50, min-dist=0.
- 
- Figure 10: Music Maps generated using different t-SNE and UMAP parameters
+```Figure 10: Music Maps generated using different t-SNE and UMAP parameters```
 
  ## 6. Conclusion
 
