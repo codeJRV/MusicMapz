@@ -121,40 +121,78 @@ However, PCA as shown in Fig 6.b also indicates that the map becomes less intuit
 
  ## References
  [1] 3 voice techniques: Legato, staccato, vibrato: https://www.youtube.com/watch?v=shtz01-zie8.
+ 
  [2] Data to date: the rapid rise of social and streaming: https://www.nextbigsound.com/industry-report/2015.
+ 
  [3] Google infinite drum machine: https://experiments.withgoogle.com/ai/drum-machine.
+ 
  [4] Umap tsne embedding visualiser: https://github.com/fedden/umap-tsne-embedding-visualiser.
+ 
  [5] G. Adomavicius and A. Tuzhilin. Toward the next generation of recommender systems: A survey of the state-of-the-art and possibleextensions.IEEE transactions on knowledge and data engineering, 17(6):734–749, 2005.
+ 
  [6] L. Aversano. Terminologia violinistica tra sei e settecento.Tra le note, pages 1000–1034, 1996.
+ 
  [7] T. Bertin-Mahieux, D. P. Ellis, B. Whitman, and P. Lamere. The million song dataset. InIsmir, volume 2, page 10, 2011.
+ 
  [8] K. Bunte, M. Biehl, and B. Hammer. A general framework for dimensionality-reducing data visualization mapping.Neural Compu-tation, 24(3):771–804, 2012.
+ 
  [9]O. Celma, M. Ramirez, and P. Herrera. Foafing the music: A music recommendation system based on rss feeds and user preferences.Inin ISMIR. Citeseer, 2005.
+ 
  [10] H. Choi and J. Berger. Waax: Web audio api extension. InNIME, pages 499–502, 2013.
- [11] K. Choi, G. Fazekas, M. Sandler, and K. Cho. Convolutional recurrent neural networks for music classification. InAcoustics, Speechand Signal Processing (ICASSP), 2017 IEEE International Conference on, pages 2392–2396. IEEE, 2017.
+ 
+ [11] K. Choi, G. Fazekas, M. Sandler, and K. Cho. Convolutional recurrent neural networks for 
+ music classification. InAcoustics, Speechand Signal Processing (ICASSP), 2017 IEEE International Conference on, pages 2392–2396. IEEE, 2017.
+ 
  [12] M. Defferrard, K. Benzi, P. Vandergheynst, and X. Bresson. Fma: A dataset for music analysis.arXiv preprint arXiv:1612.01840,2016.
+ 
  [13] S. Dieleman and B. Schrauwen. Multiscale approaches to music audio feature learning. In14th International Society for MusicInformation Retrieval Conference (ISMIR-2013), pages 116–121. Pontifıcia Universidade Catolica do Parana, 2013. 
+ 
  [14] J. Dirksen.Learning Three. js: the JavaScript 3D library for WebGL. Packt Publishing Ltd, 2013.
+ 
  [15] P. Filzmoser, K. Hron, and C. Reimann. Univariate statistical analysis of environmental (compositional) data: problems and possibil-ities.Science of the Total Environment, 407(23):6100–6108, 2009.
+ 
  [16] S. Flesch, A.-S. Gutsche, and D. Paschen. Exploring the untapped potential of sound maps.
+ 
  [17] J. Foote. Visualizing music and audio using self-similarity. InProceedings of the seventh ACM international conference on Multime-dia (Part 1), pages 77–80. ACM, 1999.
+ 
  [18] W. Hill, L. Stead, M. Rosenstein, and G. Furnas. Recommending and evaluating choices in a virtual community of use. InProceedingsof the SIGCHI conference on Human factors in computing systems, pages 194–201. ACM Press/Addison-Wesley Publishing Co.,1995.
+ 
  [19] A. J. Izenman. Linear discriminant analysis. InModern multivariate statistical techniques, pages 237–280. Springer, 2013.
+ 
  [20] F.-F. Kuo, M.-F. Chiang, M.-K. Shan, and S.-Y. Lee. Emotion-based music recommendation by association discovery from filmmusic. InProceedings of the 13th annual ACM international conference on Multimedia, pages 507–510. ACM, 2005.
+ 
  [21] S. W. Lee, J. Bang, and G. Essl. Live coding youtube: Organizing streaming media for an audiovisual performance.Ann Arbor,1001:48109–2121, 2017.
+ 
  [22] M. Levy and M. Sandler. A semantic space for music derived from social tags.Austrian Compuer Society, 1:12, 2007.
+ 
  [23] T. Li, M. Ogihara, and Q. Li. A comparative study on content-based music genre classification. InProceedings of the 26th annualinternational ACM SIGIR conference on Research and development in informaion retrieval, pages 282–289. ACM, 2003.
+ 
  [24] L. v. d. Maaten and G. Hinton. Visualizing data using t-sne.Journal of machine learning research, 9(Nov):2579–2605, 2008.
+ 
  [25] B. McFee, C. Raffel, D. Liang, D. P. Ellis, M. McVicar, E. Battenberg, and O. Nieto. librosa: Audio and music signal analysis inpython. InProceedings of the 14th python in science conference, pages 18–25, 2015.
+ 
  [26] L. McInnes and J. Healy. Umap: Uniform manifold approximation and projection for dimension reduction. arXiv preprintarXiv:1802.03426, 2018.
+ 
  [27] H.-S. Park, J.-O. Yoo, and S.-B. Cho. A context-aware music recommendation system using fuzzy bayesian networks with utilitytheory. InInternational conference on Fuzzy systems and knowledge discovery, pages 970–979. Springer, 2006.
+ 
  [28] S. Prasad and L. M. Bruce. Limitations of principal components analysis for hyperspectral target recognition.IEEE Geoscience andRemote Sensing Letters, 5(4):625–629, 2008.
+ 
  [29] S. Rohit and S. Chakravarthy. A convolutional neural network model of the neural responses of inferotemporal cortex to complexvisual objects.BMC neuroscience, 12(1):P35, 2011.
+ 
  [30] S. Saxena and C. J. Romanowski. Theme extraction from lyrics.
+ 
  [31] Y. Song, S. Dixon, and M. Pearce. A survey of music recommendation systems and future perspectives. In9th InternationalSymposium on Computer Music Modeling and Retrieval, volume 4, 2012.
+ 
  [32] M. Torrens, P. Hertzog, and J. L. Arcos. Visualizing and exploring personal music libraries. InISMIR, 2004.
+ 
  [33] G. Tzanetakis and P. Cook. Musical genre classification of audio signals. IEEE Transactions on speech and audio processing,10(5):293–302, 2002.
+ 
  [34] A. Van den Oord, S. Dieleman, and B. Schrauwen. Deep content-based music recommendation. InAdvances in neural information processing systems, pages 2643–2651, 2013.
+ 
  [35] M. M. Van Hulle. Self-organizing maps. InHandbook of Natural Computing, pages 585–622. Springer, 2012.
+ 
  [36] S. Wold, K. Esbensen, and P. Geladi. Principal component analysis.Chemometrics and intelligent laboratory systems, 2(1-3):37–52,1987.
+ 
  [37] Y. Xia, L. Wang, and K.-F. Wong. Sentiment vector space model for lyric-based song sentiment classification.International Journalof Computer Processing Of Languages, 21(04):309–330, 2008.
+ 
  [38] E. Zheng, M. Moh, and T.-S. Moh. Music genre classification: A n-gram based musicological approach. InAdvance ComputingConference (IACC), 2017 IEEE 7th International, pages 671–677. IEEE, 2017.
