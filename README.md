@@ -14,7 +14,9 @@ We then perform dimensionality reduction techniques on the reduced feature vecto
 
 ## 2. Literature Review
 
-```Figure 1: Performance comparison of UMAP vs t-SNE [26]```
+``````
+![Alt text](MusicMapz/README-FILES/UMap.png?raw=true "Figure 1: Performance comparison of UMAP vs t-SNE [26]")
+
 
 There are two main approaches towards classification of music. The first approach uses music metadata, such as genre, tags, comments, artist information etc to develop a machine learning model to predict missing information or features of  a new song, given other related meta-data. For example, if a band ”Iron Maiden” is a heavy metal band, songs released by artists in the band would also be in the metal genre.Some of these approaches outlined in [31] include CollaborativeFiltering [18], Content based musical information retrieval [5] , using Social Tags [22], Emotion Based Model[20] amongmany others. These approaches use meta-data appended to the music file in addition to usage statistics from users as a form of social tagging.
 
