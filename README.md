@@ -2,6 +2,8 @@
 
 Music is complex and varies widely in beats, frequencies and structure. This experiment uses the spectrogram of common songs to organize thousands of everyday tracks. We implement various neural network models to train classifiers to segregate neighboring songs with similar features from the mel-spectrogram of the songs. The softmax output of the neural network thus trained is used as a reduced feature set in order to perform dimensionality reduction of the songs. We then create different 2D embeddings of the reduced feature set using various dimensionality reduction techniques. These embeddings are used to place similar song features closer together on a visually interactive song-map. This, in our research so far, is the first attempt at producing a visual and interactive map of music at a full song collection scale that users can use in order to explore the world of music, discover and listen to songs of their preference.
 
+[![Watch the video](https://github.com/codeJRV/MusicMapz/blob/master/README-FILES/play.png)](https://vimeo.com/265843408)
+
 ## 1. Methodology
 
 In order to achieve the goal of scalability classifying thousands of songs while not loosing its transitive nature, our ap-proach does not perform a one-hot classification on the data. We also develop a means to reduce the size of the musicalfeatures from the raw audio of the song using mel-spectogram. We then train a neural network classifier on the reduced dataand use the softmax output in order to perform the visualization. The methodology we used is detailed below.
