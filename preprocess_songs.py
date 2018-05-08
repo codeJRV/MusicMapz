@@ -20,25 +20,25 @@ def split_and_label():
     X_train, X_test, y_train, y_test = train_test_split(songs, genres, test_size=config.TESTING_RATIO, random_state=1)
     X_train, X_val, y_train, y_val   = train_test_split(X_train, y_train, test_size=config.VALIDATION_RATIO, random_state=1)
 
-    with open (training_path,"w")as fp:
+    with open (config.TRAINING_SONGS_PATHS,"w")as fp:
         for line in X_train:
             fp.write(line+"\n")
-    with open (training_label,"w")as fp:
+    with open (config.TRAINING_SONGS_LABELS,"w")as fp:
         for line in y_train:
             fp.write(line+"\n")
 
-    with open (testing_path,"w")as fp:
+    with open (config.TESTING_SONGS_PATHS,"w")as fp:
         for line in X_test:
             fp.write(line+"\n")
-    with open (testing_label,"w")as fp:
+    with open (config.TESTING_SONGS_LABELS,"w")as fp:
         for line in y_test:
             fp.write(line+"\n")
 
 
-    with open (validation_path,"w")as fp:
+    with open (config.VALIDATION_SONGS_PATHS,"w")as fp:
         for line in X_val:
             fp.write(line+"\n")
-    with open (validation_label,"w")as fp:
+    with open (config.VALIDATION_SONGS_LABELS,"w")as fp:
         for line in y_val:
             fp.write(line+"\n")
 
@@ -61,6 +61,7 @@ def split_and_label():
         shuffle(allsongdict[key])
 
 def generate_h5_files():
+        tags= utils.load(config.GENRES_FILE)
         training_paths     = utils.load(config.TRAINING_SONGS_PATHS)
         training_labels    = utils.name2num(utils.load(config.TRAINING_SONGS_LABELS),tags)
 

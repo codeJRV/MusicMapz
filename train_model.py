@@ -22,7 +22,7 @@ if config.SELECT_DEEP_MODELS:
 else:
     import model as m
 # RUN ONCE ONLY AND REMEMEMBER TO SAVE MELSPECS
-tags = utils.load(config.GENRES_FILE_PATH)
+tags = utils.load(config.GENRES_FILE)
 nb_classes = len(tags)
 
 if config.LOAD_MELSPECS:
@@ -93,7 +93,6 @@ try:
     f.close()
 # Save files when an sudden close happens / ctrl C
 except:
-    print "exception"
     f_train.close()
     f_validate.close()
     f_scores.close()
@@ -102,7 +101,6 @@ except:
     f.write(str(time_elapsed))
     f.close()
 finally:
-    print "finally"
     f_validate.close()
     f_scores.close()
     # Save time elapsed

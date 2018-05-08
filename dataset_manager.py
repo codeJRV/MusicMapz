@@ -21,7 +21,7 @@ def get_all_song_paths_and_labels(allSongPath):
     #print genres
     song_list = []
 
-    genre_names = open("lists/genre_names.txt","w")
+    genre_names = open(config.GENRES_FILE,"w")
 
     for genre in genres:
         genre_songs = []
@@ -34,9 +34,9 @@ def get_all_song_paths_and_labels(allSongPath):
                     song_path = path + "/" + file
                     #print song_path
                     song = [song_path,genre]
-                    genre_songs.append(song)
+                    song_list.append(song)
 
-        song_list.append(genre_songs)
+        #song_list.append(genre_songs)
 
     all_songs_path = open(config.ALL_SONGS_PATHS,"w")
     all_songs_label = open(config.ALL_SONGS_LABELS,"w")
