@@ -43,9 +43,13 @@ Thus, in order to achieve meaningful dimensionality reduction, the song features
 The final model we developed was a 8 layer Gated Recurrent Convolutional Neural Network with 6 convolutional layersand 2 recurrent layers. The convolutional layers extract high level features from the neural network while the recurrent layersprovide the ability to capture time-series information from the data. In this manner, features such as beats, treble, and vocalscan be thought of as a series of neuron activations in a sequential manner, with the convolutional layers aggregating lowerlevel features into higher level features, and the recurrent units firing, if a particular high-level feature is sustained for a fixedperiod of time, for example legato, staccato and vibrato in vocals[1]. Paper [6] explains some of these patterns in violinmusic.Even after mel-spectogram reduction, the size of the input was very large. Thus we optimized the algorithms in orderto reduce the computation time. We converted the tensorflow backend of keras to GPU based code in order to reducecomputation time from approximately 5 minutes for 1 epoch of 1000 songs, to around 40 seconds per epoch for 1000 songs.This was done by lowering the batch size and running the computation using an Nvidia GTX1080x GPU. This allowed us toscale up the data collection from 400 to 1000 to upto 23,000 songs.A table detailing the architecture of various models and their classification accuracy, with respect to various hyper-parameters are given.
 
 ```Model          Dataset    Epochs Train_Acc Validation_Acc Test_Acc.```
+
 ```4 conv. layers GTZAN       40      0.87       0.8            0.78```
+
 ```4 conv. layers GTZAN       300     0.89       0.78           0.75```
+
 ```6 conv. layers GTZAN       100     0.93       0.65           0.6 ```
+
 ```6 conv. layers GTZAN+FMA   100     0.90       0.80           0.80```
 
 ```Table 1: Accuracies for different neural network models```
