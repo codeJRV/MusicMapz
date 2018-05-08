@@ -1,0 +1,14 @@
+1. Download the dataset GTZAN/FMA from below links
+    http://opihi.cs.uvic.ca/sound/genres.tar.gz
+    https://github.com/mdeff/fma
+    https://os.unil.cloud.switch.ch/fma/fma_small.zip
+    https://os.unil.cloud.switch.ch/fma/fma_medium.zip
+    https://os.unil.cloud.switch.ch/fma/fma_large.zip
+2. Set the correct paths for different in config.py according to your directory structure.
+3. Run preprocess_songs.py to divide the data set to divide into training/test and validation.
+4. Run train_model.py to train the train_model
+5. Run test_model.py to test the model
+6. Run Generate_softmax.py to get the softmax layer output for all the songs.
+7. Run create_tsne_embeddings.py to create the .json file of embeddings for demo.
+8. For t-SNE/UMAP/PCA visualization open demo.html once data.json is generated.
+9. For playing music in visualization server set up is required in the songs directory.
